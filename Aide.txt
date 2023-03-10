@@ -2,3 +2,4 @@ Manipulation
 Creation de l'application
 [terminal]
 ng new ng-skater-app --minimal --style=css
+ng generate directive border-car 
