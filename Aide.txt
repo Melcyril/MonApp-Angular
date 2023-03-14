@@ -6,3 +6,5 @@ ng generate directive border-car
 ng generate pipe skater-sponsor-color "vjs-text-track-display
 ng generate component list-skater --inline-template=false
 ng generate component detail-skater --inline-template=false
+ng generate component page-not-found
+ng generate module skater
