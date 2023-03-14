@@ -2,4 +2,7 @@ Manipulation
 Creation de l'application
 [terminal]
 ng new ng-skater-app --minimal --style=css
-ng generate directive border-car 
+ng generate directive border-car
+ng generate pipe skater-sponsor-color "vjs-text-track-display
+ng generate component list-skater --inline-template=false
+ng generate component detail-skater --inline-template=false
