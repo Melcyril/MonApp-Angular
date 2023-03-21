@@ -8,3 +8,14 @@ ng generate component list-skater --inline-template=false
 ng generate component detail-skater --inline-template=false
 ng generate component page-not-found
 ng generate module skater
+ng generate service skater/skater --dry-run (Simulation de generation du service dans le dossier skater qui 
+					     permet de verifier qu'on crée le service dans le dossier skater)
+ng generate service skater/skater
+npm install angular-in-memory-web-api --save-dev
+ng generate service in-memory-data
+
+
+
+Programmation reactive RxJS Observable
+https://rxmarbles.com/
+
