@@ -13,7 +13,7 @@ ng generate service skater/skater --dry-run (Simulation de generation du service
 ng generate service skater/skater
 npm install angular-in-memory-web-api --save-dev
 ng generate service in-memory-data
-
+ng generate component skater/add-skater
 
 
 Programmation reactive RxJS Observable
