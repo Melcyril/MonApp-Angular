@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <app-search-skater></app-search-skater>
+        <div *ngFor="let skater of skaterList" class="col m4 s6" > 
+            <div (click)='goToSkater(skater)' skater class="card horizontal" skateBorderCard>
+                <div class="card-image">
+                    <img [src]="skater.picture"/>
+
+                </div>
+       
+                    <div class="card-content">
+                        <p>{{skater.surname}}</p>
+                        <p>{{skater.name}}</p>
+                        <p><small>{{skater.created|date:"dd/MM/yyyy"}}</small></p>
+                        <span *ngFor="let sponsor of skater.sponsor" class="{{sponsor|skaterSponsorColor}}">
+                            {{sponsor}}
+                        </span>
+                    </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+<a class="btn-floating btn-large waves-effect waves-light red z-deph-3" 
+style="position: fixed; bottom: 25px; right: 25px;"
+routerLink="/skater/add">+</a>

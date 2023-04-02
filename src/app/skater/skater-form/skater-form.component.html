@@ -1,0 +1,127 @@
+<form *ngIf="skater" (ngSubmit)="onSubmit()" #skaterForm="ngForm">
+    <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="card-panel">
+    
+          <!-- Pokemon name -->
+          <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" class="form-control" id="name"
+                    required
+                    pattern="^[a-zA-Z0-9àéèç]{1,25}$"
+                   [(ngModel)]="skater.name" name="name"
+                   #name="ngModel">
+    
+            <div [hidden]="name.valid || name.pristine"
+                  class="card-panel red accent-1">
+                  Le nom du skater est requis (1-25).
+            </div>
+          </div>
+              <!-- Pokemon Picture-->
+              <div *ngIf="isAddForm" class="form-group">
+                <label for="picture">Picture</label>
+                <input type="url" class="form-control" id="picture"
+                        required
+                       [(ngModel)]="skater.picture" name="picture"
+                       #picture="ngModel">
+        
+                <div [hidden]="picture.valid || picture.pristine"
+                      class="card-panel red accent-1">
+                      L'image du skater est requise.
+                </div>
+              </div>
+          <!-- Skater surname -->
+          <div class="form-group">
+            <label for="surname">Prénom</label>
+            <input type="text" class="form-control" id="surname"
+                    required
+                    pattern="^[a-zA-Z0-9àéèç]{1,25}$"
+                   [(ngModel)]="skater.surname" name="surname"
+                   #surname="ngModel">
+             <div [hidden]="surname.valid || surname.pristine"
+                   class="card-panel red accent-1">
+                   Le prenom du skater est requis (1-25).
+             </div>
+
+          </div>
+             <!--footed-->
+             <p>
+              <label>
+                <input (click)="footedSkater('goofy')" name="footed" type="radio"
+
+                [checked]="hasFootedGoofy()"  
+                
+                />
+                <span>Goofy</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input (click)="footedSkater('regular')" name="footed" type="radio" 
+                
+                [checked]="hasFootedRegular()"  
+    
+                />
+                <span>Regular</span>
+              </label>
+            </p>
+            
+              <!--<label>
+              <input name="group1" type="radio" value="Goofy"   checked >
+              <span></span>
+            </label>
+              <label>
+              <input name="group1" type="radio" value="Régular" name="group1" [ngModel]="skater.footed" >
+              <span></span>
+              </label>-->
+           
+          <!--skater Age -->
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" class="form-control" id="age"
+                    required
+                    pattern="^[0-9]{1,2}$"
+                   [(ngModel)]="skater.age" name="age"
+                   #age="ngModel">
+             <div [hidden]="age.valid || age.pristine"
+                   class="card-panel red accent-1">
+                   L'age du skater est compris entre 0 et 99.
+             </div>
+          </div>
+ 
+
+          <!-- Skater Sponsor -->
+          <form class="form-group">
+            <label for="sponsor">Sponsors</label>
+            <p *ngFor="let sponsor of sponsors">
+              <label>
+                <input type="checkbox"
+                  class="filled-in"
+                  id="{{ sponsor }}"
+                  [value]="sponsor"
+                  [checked]="hasSponsor(sponsor)"
+                  [disabled]="!isSponsorsValid(sponsor)"
+                  (change)="selectSponsor($event, sponsor)"/>
+                <span [attr.for]="sponsor">
+                  <div class="{{ sponsor | skaterSponsorColor }}">
+                    {{ sponsor }}
+                  </div>
+                </span>
+              </label>
+            </p>
+          </form>
+    
+          <!-- Submit button -->
+          <div class="divider"></div>
+          <div class="section center">
+            <button type="submit"
+              class="waves-effect waves-light btn"
+              [disabled]="!skaterForm.form.valid">
+              Valider</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+  </form>
+  <h3 *ngIf="!skater" class="center"><app-loader></app-loader></h3>

@@ -14,7 +14,11 @@ ng generate service skater/skater
 npm install angular-in-memory-web-api --save-dev
 ng generate service in-memory-data
 ng generate component skater/add-skater
-
+ng generate component skater/search-skater --inline-template=false --dry-run
+ng generate component skater/loader
+ng generate guard auth --dry-run
+ng generate service auth
+ng generate component login --inline-template=false --dry-run
 
 Programmation reactive RxJS Observable
 https://rxmarbles.com/

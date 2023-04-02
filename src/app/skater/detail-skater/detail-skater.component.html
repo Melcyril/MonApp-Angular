@@ -1,0 +1,54 @@
+<div *ngIf="skater" class="row">
+    <div class="col s12 m8 offset-m2">
+    <h2 class="header center">{{ skater.name }}</h2>
+    <div class="card horizontal hoverable">
+      <div class="card-image">
+        <img [src]="skater.picture">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Nom</td>
+                <td><strong>{{ skater.name }}</strong></td>
+              </tr>
+              <tr>
+                <td>Prénom</td>
+                <td><strong>{{ skater.surname }}</strong></td>
+              </tr>
+              <tr>
+                <td>age</td>
+                <td><strong>{{ skater.age }}</strong></td>
+              </tr>
+              <tr>
+                <td>Footed</td>
+                <td><strong>{{ skater.footed }}</strong></td>
+              </tr>
+              <tr>
+                <td>Information</td>
+                <td><strong>{{ skater.information }}</strong></td>
+              </tr>
+              <tr>
+                <td>Sponsor</td>
+                <td>
+                  <span *ngFor="let sponsor of skater.sponsor" class="{{ sponsor | skaterSponsorColor }}">{{ sponsor }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Date de création</td>
+                <td><em>{{ skater.created | date:"dd/MM/yyyy" }}</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goToSkaterList()">Retour</a>
+          <a (click)="goToEditSkater(skater)">Editer</a>
+          <a (click)="deleteSkater(skater)">Supprimer</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <h4 *ngIf='!skater' class="center"><app-loader></app-loader></h4>
